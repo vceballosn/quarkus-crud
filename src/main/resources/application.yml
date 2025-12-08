@@ -1,0 +1,26 @@
+# Configuración de la Base de Datos PostgreSQL
+quarkus:
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    password: 81942686
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/test
+  # Configuración de Hibernate/Panache
+  hibernate-orm:
+    database:
+      # 'none' no hace nada, 'update' actualiza el esquema, 'create-drop' lo crea y lo borra al salir
+      # update
+      generation: drop-and-create
+
+
+
+# -------------------------------------validacion de campos de entradas ---------------------------------------#
+
+# --- 1. Mensaje de error general para el teléfono ---
+app:
+  validacion:
+    # Propiedad configurable: La Expresión Regular
+    telefono-pattern: "^04(26|16|14|24|12|22)\\d{7}$"
+    # Propiedad configurable: El Mensaje de Error
+    telefono-mensaje: "El formato del teléfono es incorrecto. Debe ser 11 dígitos y usar un prefijo móvil válido (0416,0426,0414,0424,0412,0422)"
