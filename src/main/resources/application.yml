@@ -5,7 +5,7 @@ quarkus:
     username: postgres
     password: 81942686
     jdbc:
-      url: jdbc:postgresql://localhost:5432/test
+      url: jdbc:postgresql://localhost:5432/client
   # Configuración de Hibernate/Panache
   hibernate-orm:
     database:

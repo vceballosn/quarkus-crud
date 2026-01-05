@@ -16,6 +16,7 @@ public class ClienteResource {
     @POST
     @Transactional
     @Valid
+    @Path("/create")
     public Response crearCliente(Cliente cliente) {
         System.out.println(cliente.nombre);
         cliente.persist(); // Guardar el objeto en la base de datos
@@ -24,13 +25,14 @@ public class ClienteResource {
 
     // --- R: READ (Obtener todos los clientes) ---
     @GET
+    @Path("/all")
     public List<Cliente> obtenerTodos() {
         return Cliente.listAll(); // Panache: Obtener todos
     }
 
     // --- R: READ (Obtener un cliente por ID) ---
     @GET
-    @Path("/{id}")
+    @Path("/get/{id}")
     public Cliente obtenerPorId(@PathParam("id") Long id) {
         Cliente cliente = Cliente.findById(id); // Panache: Buscar por ID
         if (cliente == null) {
@@ -41,7 +43,7 @@ public class ClienteResource {
 
     // --- U: UPDATE (Actualizar un cliente existente) ---
     @PUT
-    @Path("/{id}")
+    @Path("/put/{id}")
     @Transactional
     @Valid
     public Cliente actualizarCliente(@PathParam("id") Long id, Cliente clienteActualizado) {
@@ -64,7 +66,7 @@ public class ClienteResource {
 
     // --- D: DELETE (Eliminar un cliente) ---
     @DELETE
-    @Path("/{id}")
+    @Path("/delete/{id}")
     @Transactional
     @Valid
     public Response eliminarCliente(@PathParam("id") Long id) {

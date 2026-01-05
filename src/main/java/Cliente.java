@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Pattern;
 
-@Entity
+@Entity(name = "ClienteEntity")
 public class Cliente extends PanacheEntity {
 
     // PanacheEntity ya proporciona el campo 'id' de tipo Long
